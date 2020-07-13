@@ -1,7 +1,7 @@
 
 ## Starting Fsharp Interactive session in Visual Studios Code.
 
-[logo]: images/fsharp-interactive-vs-code.png "Fsharp-interactive-vs-code"
+[logo]: https://raw.githubusercontent.com/OliverDJ/fsharp/master/fsharp-interactive/images/fsharp-interactive-vs-code.PNG "Fsharp-interactive-vs-code"
 ![alt text][logo]
 
 ## Including other fsx files
