@@ -1,0 +1,7 @@
+**/.paket/**
+**/build/**
+**/bin/**
+**/obj/**
+**/.fake/**
+**/paket-files**
+**/.ionide/**
