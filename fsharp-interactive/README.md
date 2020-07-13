@@ -5,8 +5,9 @@
 ![alt text][logo]
 
 ## Including other fsx files
-You can load other fsx files into a script. If we have `Strings.fsx` containing the following code:
+You can load other fsx files into a script. If we have `strings.fsx` containing the following code:
 ```fsharp
+// strings.fsx
 let toUpper (s:string) = s.ToUpper()
 let toLower (s:string) = s.ToLower()
 let replace (oldValue:string) (newValue:string) (s:string) = s.Replace(oldValue,newValue)
@@ -18,10 +19,11 @@ module StringBuilder =
     let append (s:string) (sb:StringBuilder) = sb.Append(s)
 ```
 
-We can now use it in our script file like so:
+We can now use it in our  script file like so:
 
 ```fsharp
-#load "Strings.fsx"
+#load "strings.fsx"
+
 open Strings
 let name = "Devon" |> StringBuilder.initWith
             |> StringBuilder.append " Burriss"
