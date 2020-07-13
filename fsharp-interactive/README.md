@@ -22,11 +22,12 @@ module StringBuilder =
 We can now use it in our  script file like so:
 
 ```fsharp
+// load-example.fsx
 #load "strings.fsx"
 
 open Strings
-let name = "Devon" |> StringBuilder.initWith
-            |> StringBuilder.append " Burriss"
+let name = "Oliver" |> StringBuilder.initWith
+            |> StringBuilder.append " DJ"
             |> string |> toUpper
 printfn "Name: %s" name
 ```
