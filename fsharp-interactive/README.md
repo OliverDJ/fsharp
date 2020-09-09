@@ -1,4 +1,15 @@
 
+## Intial Setup for easily importing nuget packages into fsx
+
+```
+dotnet new tool-manifest --force
+dotnet tool install paket
+dotnet paket init
+dotnet paket add your-favorite-nuget-package
+dotnet paket generate-load-scripts
+```
+
+
 ## Starting Fsharp Interactive session in Visual Studios Code.
 
 [logo]: https://raw.githubusercontent.com/OliverDJ/fsharp/master/fsharp-interactive/images/fsharp-interactive-vs-code.PNG "Fsharp-interactive-vs-code"
@@ -112,6 +123,48 @@ let mySerializedString = myString |> serialize
 ```
 
 
+## Post Requests
+```fsharp
+#load ".paket\\load\\netcoreapp3.1\\FSharp.Data.fsx"
+#load ".paket\\load\\netcoreapp3.1\\Newtonsoft.Json.fsx"
+
+open FSharp.Data
+open Newtonsoft.Json
+open FSharp.Data.HttpRequestHeaders
+
+let serialize x = JsonConvert.SerializeObject(x)
+
+type PostBody =
+    {
+        Message: string
+    }
+
+let createBody (model: 'a) =
+    model 
+    |> serialize
+    |> FSharp.Data.HttpRequestBody.TextRequest
+
+
+let postRequest url body = 
+    FSharp.Data.Http.Request
+                    (   
+                        url,
+                        headers = 
+                            [ 
+                                ContentType FSharp.Data.HttpContentTypes.Json
+                                // Authorization ("Bearer " + token.AccessToken)
+                            ],
+                        httpMethod= FSharp.Data.HttpMethod.Post,
+                        body = body
+                        
+                    )
+let myUrl = "https://some-server/api/some-endpoint"
+let myPost = { Message = "MyMessageToPost" }
+let res = 
+    myPost 
+    |> createBody
+    |> postRequest myUrl
+```
 
 
 
