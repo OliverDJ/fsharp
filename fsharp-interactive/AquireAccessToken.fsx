@@ -32,7 +32,7 @@ let grabTokenFromHttpRespons resp =
             |> fun t -> t.access_token
         | _ -> "Response body was not a text"
 
-let autUrl = "<auth_url>"// e.g."https://accounts.spotify.com/api/token"
+let autUrl = "<auth_url>"// e.g. "https://accounts.spotify.com/api/token"
 let clientId = "<client_id>"
 let clientSecret = "<client_secret>"
 
